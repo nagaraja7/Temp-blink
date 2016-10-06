@@ -1,20 +1,17 @@
-#include <math.h>
-const int B=4275;                 // B value of the thermistor
-const int R0 = 100000;            // R0 = 100k
-const int pinTempSensor = 2;     // Grove -Temperature Sensor connect to A5
-void setup()
-{
-Serial.begin(9600);
-}
-void loop()
-{
-int a = analogRead(pinTempSensor );
-float R = 1023.0/((float)a)-1.0;
-R = 100000.0*R;
-//convert to temperature via datasheet ;
-float temperature=1.0/(log(R/100000.0)/B+1/298.15)-273.15;
-Serial.print("temperature = ");
-Serial.println(temperature);
-delay(100);
+#define LED RED_LED
+
+//see pins_energia.h for more LED definitions
+//#define LED GREEN_LED
+  
+// the setup routine runs once when you press reset:
+void setup() {                
+  // initialize the digital pin as an output.
+  pinMode(LED, OUTPUT);     
 }
 
+// the loop routine runs over and over again forever:
+void loop() {
+  digitalWrite(LED, HIGH);   // turn the LED on (HIGH is the voltage level)
+  delay(1000);               // wait for a second
+  digitalWrite(LED, LOW);    // turn the LED off by making the voltage LOW
+  delay(1000);               // wait for a second
